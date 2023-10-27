@@ -1,0 +1,135 @@
+package game;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class Game {
+	private static Room currentRoom;
+	private static ArrayList<Item> inventory = new ArrayList<Item>();
+	
+	public static Room getCurrentRoom() {
+		return currentRoom;
+	}
+	
+	public static void move(char direction) { //make methods for often used commands
+		if(currentRoom.getExit(direction) != null) {
+			if(currentRoom.getExit(direction).isLocked()) {
+				System.out.println("The room is locked!");
+			} else {
+				currentRoom = currentRoom.getExit(direction);
+				System.out.println(currentRoom);
+			}
+		} else {
+			System.out.println("You can't go that way.");
+		}
+	}
+	
+	public static Item getItem(String name) {
+		for(Item i : inventory)
+			if(i.getName().equals(name))
+				return i;
+		return null;
+	}
+	
+	public static void print(String message) {
+		System.out.println(message+"\n");
+	}
+	
+	public static void main(String[] args) {
+	
+	//TODO Auto-generated method stub
+		Scanner scan = new Scanner(System.in);
+		String playercommand = "a";
+		Item i;
+		currentRoom = World.buildWorld(); //call a static method by [Class].[Method()] instead of [Object].[Method()]
+		System.out.println(currentRoom);
+	//	do { do loop doesn't need to have the original variable defined before
+			// and runs at least once
+
+		while(!playercommand.equals("x")) {
+			System.out.print("What do you want to do?");
+			playercommand = scan.nextLine();
+			String[] a = playercommand.split(" ");
+			playercommand = a[0];
+			
+			switch (playercommand) {
+			case "e" :
+			case "w" :
+			case "n" :
+			case "s" :
+			case "u" :
+			case "d" :
+				if(currentRoom.getExit(playercommand.charAt(0)) != null){
+					currentRoom = currentRoom.getExit(playercommand.charAt(0));
+					System.out.println(currentRoom);
+					
+				} else {
+					System.out.println("You can't go that way!");
+				}
+				break; 
+				
+				
+			case "i" :
+				if(inventory.isEmpty()) {
+				System.out.println("You are holding nothing!");
+				} else {
+					for (Item it : inventory) {
+						System.out.println(it);
+					}
+				}
+				break;
+				
+				
+			case "x" :
+				System.out.println("Okay. Bye!");
+				break;
+				
+				
+			case "take":
+				String it = a[1];
+				if(currentRoom.hasItem(it)) {
+					Item item = currentRoom.getItem(it);
+					if (item.isHeavy()) {
+						System.out.println("That's too heavy to carry around!");
+					} else {
+					inventory.add(currentRoom.removeItem(it));
+					System.out.println("You take the "+it+"!");
+					}
+				} else {
+					System.out.println("There is no "+it+"!");
+				}
+				break; 
+				
+				
+			case "look":
+				if((currentRoom.hasItem(a[1]))) {
+					i = currentRoom.getItem(a[1]);
+					i.look();
+				}
+				for(int z=0;z<inventory.size();z++) {
+					if(inventory.get(z).getName().equals(a[1])) {
+						inventory.get(z).look();
+					}
+				}
+				
+				break;
+				
+				
+			case "use":
+					i = getItem(a[1]);
+					if(i == null)
+						System.out.println("You don't have the " + a[1]);
+					else
+						i.use();
+				
+				break;
+				
+				
+			default:
+				System.out.println("Invalid Command, reenter.");
+			}
+				
+		} scan.close();
+	} 
+}
+
