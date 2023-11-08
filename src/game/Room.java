@@ -1,12 +1,13 @@
 package game;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Room {
+public class Room implements Serializable{
 
 	//Object Variables
 	private boolean locked; 
 	private String name;
-	private String desc; 
+	private String roomID; 
 	
 	private Room east; 
 	private Room west;
@@ -18,11 +19,13 @@ public class Room {
 	private HashMap<String, Item> roomItems; 
 	
 	//Constructor Method
-	public Room(String s, String n) {
-		name = n;
-		desc = s;
+	public Room(String s) {
+		name = s;
+		roomID = s;
 		locked = false;
 		roomItems = new HashMap<String, Item>();
+		
+		World.rooms.put(name, this); //puts room in hashmap
 	}
 	
 	public String getName() {
@@ -58,7 +61,8 @@ public class Room {
 	}
 	
 	public String getDesc() {
-		return desc;
+		String b = Game.roomDesc.get(roomID);
+		return b;
 	}
 	
 	//returns room variable based on move input
@@ -109,7 +113,6 @@ public class Room {
 	} //end of addExit
 	
 	public String toString() {
-		return desc;
+		return Game.roomDesc.get(roomID);
 	}
-	
 }

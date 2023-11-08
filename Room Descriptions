@@ -1,0 +1,21 @@
+startCell
+You are in the cell where you woke up.
+#
+hall1
+You are in a hallway
+#
+stairwell
+you are in the old stairwell
+#
+doorHall
+You are in the hallway with the locked door
+#
+ajarCell
+You are in the unlocked cell
+#
+openCor
+You are in the open corridor
+#
+muckyBath
+You are in a mucky old bathroom, overtaken by mold
+#

@@ -1,6 +1,6 @@
 package items;
 import game.*;
-public class Chain {
+public class Chain extends Item {
 	public Chain() {
 		super("Chain");
 	}
@@ -12,7 +12,7 @@ public class Chain {
 				System.out.println("You pull the chain and are instantly doused in a weird purple goo. There's nothing else in the trapdoor.");
 				Item goo = new Item("Goo");
 				goo.setDesc("You are covered in goo");
-				Game.getCurrentRoom().addItem("goo");
+				Game.getCurrentRoom().addItem(goo);
 			}
 		}
 	}

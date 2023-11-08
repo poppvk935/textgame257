@@ -1,14 +1,17 @@
 package game;
 import items.*;
+import java.util.HashMap;
+
 public class World {
+	public static HashMap<String, Room> rooms = new HashMap<String, Room>();
 	public static Room buildWorld() {
-		Room startCell = new Room("startCell", "You are in the cell where you woke up.");
-		Room hall1 = new Room("hall1","You are in a hallway.");
-		Room stairWell = new Room("stairwell", "You are in the old stairwell.");
-		Room doorHall = new Room("doorHall","you are in the hallway with a locked door.");
-		Room ajarCell = new Room("ajarCell", "You are in the unlocked cell.");
-		Room openCor = new Room("openCor", "You are in the open corridor.");
-		Room muckyBath = new Room("muckyBath", "You are in a mucky old bathroom, overtaken by mold.");
+		Room startCell = new Room("startCell");
+		Room hall1 = new Room("hall1");
+		Room stairWell = new Room("stairwell");
+		Room doorHall = new Room("doorHall");
+		Room ajarCell = new Room("ajarCell");
+		Room openCor = new Room("openCor");
+		Room muckyBath = new Room("muckyBath");
 		
 		//startCell has one exit
 		startCell.addExit(hall1, 'e');

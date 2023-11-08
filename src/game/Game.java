@@ -1,14 +1,70 @@
 package game;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 
 public class Game {
 	private static Room currentRoom;
 	private static ArrayList<Item> inventory = new ArrayList<Item>();
+	public static HashMap<String, String> roomDesc = new HashMap<String, String>(); 
+						//<RoomID, Description>
 	
 	public static Room getCurrentRoom() {
 		return currentRoom;
+	}
+	
+	public static void saveGame() {
+		File saveFile = new File("save");
+		try {
+		saveFile.createNewFile();
+		ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(saveFile));
+		stream.writeObject(currentRoom);
+		stream.writeObject(inventory);
+		stream.writeObject(World.rooms);
+		stream.close();
+		} catch (IOException e) {
+			print("ERROR: Cannot save file.");
+			e.printStackTrace();
+		}
+	}
+	
+	/*public static void loadGame() {
+		
+		ObjectInputStream stream = new ObjectInputStream(new FileInputStream(saveFile));
+		currentRoom = (Room) stream.readObject();
+		inventory = (ArrayList) stream.readObject();
+		World.rooms = (HashMap) stream.readObject();
+	}
+	*/
+	public static void populateMap(String fileName)  {
+		try {
+			Scanner scan = new Scanner(new File(fileName));
+			while(scan.hasNextLine()) {
+				String line = scan.nextLine();
+					if(!line.equals("#")) {
+						String id = line;
+						String desc = " ";
+						String d = scan.nextLine();
+						while(!d.equals("#")) {
+							desc+=d;
+							d = scan.nextLine();
+						} //End of while
+						roomDesc.put(id, desc);
+					} else {
+						scan.nextLine();
+					} // end of if else
+			
+			}	//end of while loop
+		} catch(FileNotFoundException ex ) {
+			System.out.println("File "+fileName+" not found.");
+		}
 	}
 	
 	public static void move(char direction) { //make methods for often used commands
@@ -41,11 +97,15 @@ public class Game {
 		Scanner scan = new Scanner(System.in);
 		String playercommand = "a";
 		Item i;
+		Game.populateMap("Room Descriptions");
 		currentRoom = World.buildWorld(); //call a static method by [Class].[Method()] instead of [Object].[Method()]
 		System.out.println(currentRoom);
 	//	do { do loop doesn't need to have the original variable defined before
 			// and runs at least once
+		
 
+		
+		
 		while(!playercommand.equals("x")) {
 			System.out.print("What do you want to do?");
 			playercommand = scan.nextLine();
@@ -122,6 +182,9 @@ public class Game {
 					else
 						i.use();
 				
+				break;
+			case "save":
+				saveGame();
 				break;
 				
 				
