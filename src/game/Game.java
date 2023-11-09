@@ -29,20 +29,32 @@ public class Game {
 		stream.writeObject(inventory);
 		stream.writeObject(World.rooms);
 		stream.close();
+		Game.print("Game Saved.");
+		} catch (FileNotFoundException ex) {
+			Game.print("Error accessing save file.");
 		} catch (IOException e) {
-			print("ERROR: Cannot save file.");
+			Game.print("Error creating save file.");
 			e.printStackTrace();
 		}
 	}
 	
-	/*public static void loadGame() {
-		
-		ObjectInputStream stream = new ObjectInputStream(new FileInputStream(saveFile));
+	public static void loadGame() {
+		try {
+		ObjectInputStream stream = new ObjectInputStream(new FileInputStream(new File("save")));
 		currentRoom = (Room) stream.readObject();
 		inventory = (ArrayList) stream.readObject();
 		World.rooms = (HashMap) stream.readObject();
+		stream.close();
+		} catch (FileNotFoundException e) {
+			Game.print("Error accessing load file.");
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			Game.print("Error finding item class.");
+		} catch (IOException e) {
+			Game.print("Error reading load file.");
+		}
 	}
-	*/
+	
 	public static void populateMap(String fileName)  {
 		try {
 			Scanner scan = new Scanner(new File(fileName));
@@ -187,6 +199,9 @@ public class Game {
 				saveGame();
 				break;
 				
+			case "load":
+				loadGame();
+				break;
 				
 			default:
 				System.out.println("Invalid Command, reenter.");
