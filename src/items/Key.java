@@ -6,6 +6,7 @@ public class Key extends Item {
 		super("Key");
 	}
 	
+	@Override //tells java to check the override
 	public void use() {
 			if(Game.getCurrentRoom().getName().equals("hall")) {
 				if(isUsed())
@@ -20,4 +21,13 @@ public class Key extends Item {
 			} else 
 				System.out.println("They key doesn't fit any lock in this room.");
 		}
-	}
+/*	@Override 
+	public void take() {
+		super.take();
+		Game.getCurrentRoom().setRoomID(getName());
+		}
+	
+*/
+	
+	
+}

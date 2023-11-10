@@ -19,3 +19,9 @@ You are in the open corridor
 muckyBath
 You are in a mucky old bathroom, overtaken by mold
 #
+lockedRoom
+The small hallway is abruptly ended by a locked stone door. Can't get by without a key.
+#
+lockedRoom_B
+b
+#

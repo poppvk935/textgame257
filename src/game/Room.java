@@ -6,8 +6,8 @@ public class Room implements Serializable{
 
 	//Object Variables
 	private boolean locked; 
-	private String name;
-	private String roomID; 
+	private String name; //name, not in map
+	private String roomID; //denotes description, for fetching map data
 	
 	private Room east; 
 	private Room west;
@@ -30,6 +30,10 @@ public class Room implements Serializable{
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setRoomID(String id) {
+		roomID = id;
 	}
 	
 	public boolean isLocked() {

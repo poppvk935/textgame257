@@ -12,12 +12,16 @@ import java.io.ObjectOutputStream;
 
 public class Game {
 	private static Room currentRoom;
-	private static ArrayList<Item> inventory = new ArrayList<Item>();
+	public static ArrayList<Item> inventory = new ArrayList<Item>();
 	public static HashMap<String, String> roomDesc = new HashMap<String, String>(); 
 						//<RoomID, Description>
 	
 	public static Room getCurrentRoom() {
 		return currentRoom;
+	}
+	
+	public static void setCurrentRoom(Room r) {
+		currentRoom = r;
 	}
 	
 	public static void saveGame() {
@@ -161,12 +165,7 @@ public class Game {
 				String it = a[1];
 				if(currentRoom.hasItem(it)) {
 					Item item = currentRoom.getItem(it);
-					if (item.isHeavy()) {
-						System.out.println("That's too heavy to carry around!");
-					} else {
-					inventory.add(currentRoom.removeItem(it));
-					System.out.println("You take the "+it+"!");
-					}
+					item.take();
 				} else {
 					System.out.println("There is no "+it+"!");
 				}
