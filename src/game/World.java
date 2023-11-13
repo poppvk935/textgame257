@@ -76,6 +76,7 @@ public class World {
 		doorHall.addExit(hall1, 'w');
 		doorHall.addExit(ajarCell, 'n');
 		doorHall.addExit(hall3, 's');
+		doorHall.addExit(hall4, 'e');
 		
 		//ajarCell has one exit
 		ajarCell.addExit(doorHall, 's');
@@ -87,21 +88,27 @@ public class World {
 		//hall3 is obstructed
 		hall3.addExit(doorHall, 'n');
 		hall3.addExit(stairC, 's');
+		hall3.isLocked();
 		
 		
 		
 
 /**********Q3**********/		
-		//hall4 has two (for now) exits
+		//hall4 has three (for now) exits
 		hall4.addExit(doorHall, 'n');
 		hall4.addExit(hall5, 'w');
+		hall4.addExit(stairB, 'd');
 		
+		//stairB has one (for now) exit
+		stairB.addExit(hall4, 'u');
+		stairB.setLocked(true);
 		
 		//hall5 has two exits 
 		hall5.addExit(hall4, 'e');
 		hall5.addExit(cell3, 'n');
 		Door door = new Door();
 		door.setDesc("Looks shakeable.");
+		hall5.setLocked(true);
 		
 		//cell3 has one exit
 		cell3.addExit(hall5, 's');

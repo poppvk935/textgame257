@@ -1,17 +1,14 @@
 startCell
-You are in the cell where you woke up.
+You wake up on the jagged rock floor of a weirdly small room. 
+#
+startCell_B
+The room where you woke up. To your east, the cell door. The door's lock appears to have been broken, allowing you easy access to and from. 
 #
 hall1
-You are in a hallway
+You are in a hallway 
 #
 stairwell
 you are in the old stairwell
-#
-doorHall
-You are in the hallway with the locked door
-#
-ajarCell
-You are in the unlocked cell
 #
 openCor
 You are in the open corridor
@@ -24,4 +21,28 @@ The small hallway is abruptly ended by a locked stone door. Can't get by without
 #
 lockedRoom_B
 b
+#
+doorHall
+You are in the hallway with the ajar door
+#
+ajarCell
+You are in the unlocked cell
+#
+hall3
+Down the long hallway, better lit than anything else you've seen around here, you can see a staircase. Unfortunately, unless you want tetanus, braving the southward walk of old rusty weapons and broken weapons stands doesn't sound like a good idea. 
+#
+stairC
+Blocked 
+#
+hall4
+The hallway looks much like the others you've been in. This whole place looks concerningly easy to get lost in. To the north, the hallway with the weird rubble. To the west, a twisting, abnormally dark hallway. To the right, an ornate door closed off with heavy objects, as if to keep everything out no matter what. 
+#
+hall5
+Looking down the hallway, you can make out that it turns, but not much more than that. You get a weird feeling from this hallway. Probably shouldn't go down there. 
+#
+hall5_B
+The horseshoe shaped hallway feels much more cold than the rest of the dungeon. You have a sinking feeling you're being watched out of the small bar windows in the nearly pitch black cells behind you. At the dead end of the horseshoe, traveling north is a cell with a fragile door. 
+#
+cell3
+You can look in the small hole for a window and see something on the floor 
 #
