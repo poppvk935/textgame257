@@ -63,6 +63,7 @@ public class World {
 		muckyBath.addExit(openCor, 'e');
 		Shower shower = new Shower();
 		muckyBath.addItem(shower);
+		shower.setHeavy(true);
 		shower.setDesc("A rusty drippy faucet on the ceiling.");
 		
 		//lockedRoom has one exit

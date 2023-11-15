@@ -15,6 +15,7 @@ public class Game {
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
 	public static HashMap<String, String> roomDesc = new HashMap<String, String>(); 
 						//<RoomID, Description>
+	public static Scanner scan = new Scanner(System.in);
 	
 	public static Room getCurrentRoom() {
 		return currentRoom;
@@ -110,7 +111,7 @@ public class Game {
 	public static void main(String[] args) {
 	
 	//TODO Auto-generated method stub
-		Scanner scan = new Scanner(System.in);
+
 		String playercommand = "a";
 		Item i;
 		Game.populateMap("Room Descriptions");
@@ -194,6 +195,12 @@ public class Game {
 						i.use();
 				
 				break;
+				
+			case "talk":
+				NPC npc = currentRoom.getNPC(a[1]);
+				npc.talk();
+				break;
+				
 			case "save":
 				saveGame();
 				break;
