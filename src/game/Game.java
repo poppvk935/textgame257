@@ -85,9 +85,11 @@ public class Game {
 	}
 	
 	public static void move(char direction) { //make methods for often used commands
-		if(currentRoom.getExit(direction) != null) {
-			if(currentRoom.getExit(direction).isLocked()) {
-				System.out.println("The room is locked!");
+		Room nextRoom = currentRoom.getExit(direction);
+		if(nextRoom != null) {
+			if(nextRoom.isLocked()) {
+				Game.print(nextRoom.getDesc());
+				Game.print("You can't go that way...yet.");
 			} else {
 				currentRoom = currentRoom.getExit(direction);
 				System.out.println(currentRoom);
@@ -136,13 +138,7 @@ public class Game {
 			case "s" :
 			case "u" :
 			case "d" :
-				if(currentRoom.getExit(playercommand.charAt(0)) != null){
-					currentRoom = currentRoom.getExit(playercommand.charAt(0));
-					System.out.println(currentRoom);
-					
-				} else {
-					System.out.println("You can't go that way!");
-				}
+				move(playercommand.charAt(0));
 				break; 
 				
 				

@@ -65,10 +65,17 @@ public class World {
 		muckyBath.addItem(shower);
 		shower.setHeavy(true);
 		shower.setDesc("A rusty drippy faucet on the ceiling.");
+		Flint flint = new Flint();
+		muckyBath.addItem(flint);
+		flint.setDesc("A firestarter. Now you just need something to light...");
 		
 		//lockedRoom has one exit
 		lockedRoom.addExit(openCor, 's');
 		lockedRoom.isLocked();
+		ExitKey exitKey = new ExitKey();
+		lockedRoom.addItem(exitKey);
+		
+		
 		
 
 		
@@ -81,7 +88,7 @@ public class World {
 		
 		//ajarCell has one exit
 		ajarCell.addExit(doorHall, 's');
-		Item torch = new Item("torch");
+		Torch torch = new Torch();
 		ajarCell.addItem(torch);
 		torch.setDesc("An unlit torch, obviously left here for quite a while.");
 		
@@ -109,6 +116,7 @@ public class World {
 		hall5.addExit(cell3, 'n');
 		Door door = new Door();
 		door.setDesc("Looks shakeable.");
+		door.setHeavy(true);
 		hall5.setLocked(true);
 		
 		//cell3 has one exit
