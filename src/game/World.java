@@ -1,5 +1,6 @@
 package game;
 import items.*;
+import npcs.*;
 import java.util.HashMap;
 
 public class World {
@@ -57,7 +58,9 @@ public class World {
 		Item chest = new Item("chest");
 		chest.setDesc("A chest..?");
 		openCor.addItem(chest);
-		openCor.addExit(lockedRoom, 'n');
+		openCor.addExit(lockedRoom, 'u');
+		Puppy puppy = new Puppy();
+		openCor.addNPC(puppy);
 		
 		//muckyBath has one exit
 		muckyBath.addExit(openCor, 'e');
@@ -65,10 +68,17 @@ public class World {
 		muckyBath.addItem(shower);
 		shower.setHeavy(true);
 		shower.setDesc("A rusty drippy faucet on the ceiling.");
+		Flint flint = new Flint();
+		muckyBath.addItem(flint);
+		flint.setDesc("A firestarter. Now you just need something to light...");
 		
 		//lockedRoom has one exit
-		lockedRoom.addExit(openCor, 's');
+		lockedRoom.addExit(openCor, 'd');
 		lockedRoom.isLocked();
+		ExitKey exitKey = new ExitKey();
+		lockedRoom.addItem(exitKey);
+		
+		
 		
 
 		
@@ -81,7 +91,7 @@ public class World {
 		
 		//ajarCell has one exit
 		ajarCell.addExit(doorHall, 's');
-		Item torch = new Item("torch");
+		Torch torch = new Torch();
 		ajarCell.addItem(torch);
 		torch.setDesc("An unlit torch, obviously left here for quite a while.");
 		
@@ -99,6 +109,8 @@ public class World {
 		hall4.addExit(doorHall, 'n');
 		hall4.addExit(hall5, 'w');
 		hall4.addExit(stairB, 'd');
+		Prisoner prisoner = new Prisoner();
+		hall4.addNPC(prisoner);
 		
 		//stairB has one (for now) exit
 		stairB.addExit(hall4, 'u');
@@ -109,6 +121,7 @@ public class World {
 		hall5.addExit(cell3, 'n');
 		Door door = new Door();
 		door.setDesc("Looks shakeable.");
+		door.setHeavy(true);
 		hall5.setLocked(true);
 		
 		//cell3 has one exit

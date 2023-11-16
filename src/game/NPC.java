@@ -1,12 +1,17 @@
 package game;
 
-public class NPC {
+import java.io.Serializable;
+
+public class NPC implements Serializable{
 	private String name;
 	private String desc;
+	private boolean left;
+	private int talk;
 	
 	public NPC(String n, String d) {
 		name = n;
 		desc = d;
+		talk = 1;
 		
 	}
 	
@@ -14,16 +19,24 @@ public class NPC {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getDesc() {
 		return desc;
+	}
+	
+	public int getTalk() {
+		return talk;
+	}
+	
+	public void increaseTalk(int i) {
+		talk+=i;
 	}
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	
+	public void look() {
+		Game.print(desc);
 	}
 
 	public void say(String dialog) {
@@ -40,6 +53,14 @@ public class NPC {
 	
 	public void give(String i) {
 		
+	}
+	
+	public void setLeft(boolean b) {
+		left = b;
+	}
+	
+	public boolean getLeft() {
+		return left;
 	}
 	
 	/**

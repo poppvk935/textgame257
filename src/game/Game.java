@@ -85,9 +85,11 @@ public class Game {
 	}
 	
 	public static void move(char direction) { //make methods for often used commands
-		if(currentRoom.getExit(direction) != null) {
-			if(currentRoom.getExit(direction).isLocked()) {
-				System.out.println("The room is locked!");
+		Room nextRoom = currentRoom.getExit(direction);
+		if(nextRoom != null) {
+			if(nextRoom.isLocked()) {
+				Game.print(nextRoom.getDesc());
+				Game.print("You can't go that way...yet.");
 			} else {
 				currentRoom = currentRoom.getExit(direction);
 				System.out.println(currentRoom);
@@ -104,6 +106,10 @@ public class Game {
 		return null;
 	}
 	
+	public static void addItem(Item name) {
+		inventory.add(name);
+	}
+	
 	public static void print(String message) {
 		System.out.println(message+"\n");
 	}
@@ -114,6 +120,7 @@ public class Game {
 
 		String playercommand = "a";
 		Item i;
+		NPC n;
 		Game.populateMap("Room Descriptions");
 		currentRoom = World.buildWorld(); //call a static method by [Class].[Method()] instead of [Object].[Method()]
 		System.out.println(currentRoom);
@@ -136,13 +143,7 @@ public class Game {
 			case "s" :
 			case "u" :
 			case "d" :
-				if(currentRoom.getExit(playercommand.charAt(0)) != null){
-					currentRoom = currentRoom.getExit(playercommand.charAt(0));
-					System.out.println(currentRoom);
-					
-				} else {
-					System.out.println("You can't go that way!");
-				}
+				move(playercommand.charAt(0));
 				break; 
 				
 				
@@ -174,9 +175,12 @@ public class Game {
 				
 				
 			case "look":
-				if((currentRoom.hasItem(a[1]))) {
+				if((currentRoom.hasItem(a[1]) )) {
 					i = currentRoom.getItem(a[1]);
 					i.look();
+				} else if(currentRoom.hasNPC(a[1])) {
+					n = currentRoom.getNPC(a[1]);
+					n.look();
 				}
 				for(int z=0;z<inventory.size();z++) {
 					if(inventory.get(z).getName().equals(a[1])) {

@@ -46,6 +46,11 @@ public class Room implements Serializable{
 		locked = b;
 	}
 	
+	public String getDesc() {
+		String b = Game.roomDesc.get(roomID);
+		return b;
+	}
+	
 	public void addItem(Item i) {
 		roomItems.put(i.getName(), i); //ask the item what its name is
 	}
@@ -66,10 +71,12 @@ public class Room implements Serializable{
 		return it;
 	}
 	
-	public String getDesc() {
-		String b = Game.roomDesc.get(roomID);
-		return b;
+	public boolean hasNPC(String name) {
+		return roomNPCs.containsKey(name);
 	}
+	
+
+
 	
 	public void addNPC(NPC p) {
 		roomNPCs.put(p.getName(), p);
