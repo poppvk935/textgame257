@@ -24,4 +24,6 @@ public class Torch extends Item implements Serializable{
 			
 		}
 	}
+
 }
+

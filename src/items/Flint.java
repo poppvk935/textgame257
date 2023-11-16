@@ -10,6 +10,5 @@ public class Flint extends Item {
 		//	Torch t = game.Game.getItem("torch");
 			
 		}
-	}
 }
-//}
+}

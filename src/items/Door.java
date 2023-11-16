@@ -14,4 +14,5 @@ public class Door extends Item {
 			setUsed(true);
 		}
 	}
+
 }

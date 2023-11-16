@@ -14,4 +14,6 @@ public class ExitKey extends Item {
 			Game.print("There is nowhere here to use this.");
 		}
 	}
+
 }
+
