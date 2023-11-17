@@ -16,6 +16,8 @@ public class Room implements Serializable{
 	private Room up;
 	private Room down; 
 	
+	private int entry;
+	
 	private HashMap<String, Item> roomItems; 
 	private HashMap<String, NPC> roomNPCs;
 	
@@ -26,6 +28,7 @@ public class Room implements Serializable{
 		locked = false;
 		roomItems = new HashMap<String, Item>();
 		roomNPCs = new HashMap<String, NPC>();
+		entry = 1;
 		
 		World.rooms.put(name, this); //puts room in hashmap
 	}
@@ -75,15 +78,20 @@ public class Room implements Serializable{
 		return roomNPCs.containsKey(name);
 	}
 	
-
-
-	
 	public void addNPC(NPC p) {
 		roomNPCs.put(p.getName(), p);
 	}
 	
 	public NPC getNPC(String name) {
 		return roomNPCs.get(name);
+	}
+	
+	public int getEntry() {
+		return entry;
+	}
+	
+	public void setEntry(int i) {
+		entry += i;
 	}
 	
 	//returns room variable based on move input

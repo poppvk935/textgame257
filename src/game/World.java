@@ -38,6 +38,10 @@ public class World {
 		Chain chain = new Chain();
 		startCell.addItem(chain);
 		chain.setDesc("Rusty chain hanging from the ceiling. Looks like it opens a trapdoor. An escape?");
+		Key key = new Key();
+		startCell.addItem(key);
+		key.setDesc("It is a frail old key. Annoyingly rusty.");
+
 		
 		
 		//hall1 has four exits
@@ -51,6 +55,9 @@ public class World {
 		Wand wand = new Wand();
 		stairWell.addItem(wand);
 		wand.setDesc("An interestingly uniform stick.");
+		Door exitDoor = new Door();
+		stairWell.addItem(exitDoor);
+		exitDoor.setDesc("The large door stands ");
 		
 		//openCor has two exits
 		openCor.addExit(hall1, 'n');
@@ -126,9 +133,9 @@ public class World {
 		
 		//cell3 has one exit
 		cell3.addExit(hall5, 's');
-		Key key = new Key();
+	/*	Key key = new Key();
 		key.setDesc("It is a frail old key. Annoyingly rusty.");
-		
+		*/
 		
 		return startCell;
 	}

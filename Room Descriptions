@@ -1,17 +1,15 @@
 startCell
-You wake up on the jagged rock floor of a weirdly small room. 
-#
-startCell_B
 The room where you woke up. To your east, the cell door. The door's lock appears to have been broken, allowing you easy access to and from. 
 #
 hall1
-You are in a hallway 
+You are in a dimly lit hallway. Its low ceilings and narrow walls make you claustrophobic. To the west is the cell you woke up in. To the east, another, equally narrow hallway extends into darkness. To the south, a large open corridor. Next to your cell, a stairway leads upstairs. 
 #
 stairwell
-you are in the old stairwell
+You are in the old stairwell. The small stairs and narrow hallway of this spiraling mess make your head spin. At the top of the stairwell, a heavy locked stone door sits. You wonder if this is the exit.  
 #
 openCor
-You are in the open corridor
+You are in a large open corridor. In comparison to the halls around it, this room is a breath of fresh air. It is well lit. 
+To the west leads to the bathroom. The north leads into a narrow corridor. You can kind of see where you started from it. Up a few stairs you can see a door. 
 #
 muckyBath
 You are in a mucky old bathroom, overtaken by mold. Your head spins at the muggy moldy scent that permeates the room. The small room contains 
@@ -32,7 +30,10 @@ hall3
 Down the long hallway, better lit than anything else you've seen around here, you can see a staircase. Unfortunately, unless you want tetanus, braving the southward walk of old rusty weapons and broken weapons stands doesn't sound like a good idea. 
 #
 stairC
-Blocked 
+ The entrance to the stairway is blocked by weapons and rubble. You don't want to go over there. 
+#
+stairC_unlocked
+The stairway leads upstairs to a brightly lit room. Back downstairs is the hallway full of rusty metal.
 #
 hall4
 The hallway looks much like the others you've been in. This whole place looks concerningly easy to get lost in. To the north, the hallway with the weird rubble. To the west, a twisting, abnormally dark hallway. To the right, an ornate door closed off with heavy objects, as if to keep everything out no matter what. 

@@ -12,6 +12,8 @@ public class Door extends Item {
 			c.setLocked(false);
 			setDesc("The heavy door now lays on the ground.");
 			setUsed(true);
+		}else if(Game.getCurrentRoom().equals("stairwell")) {
+			game.Game.print("You shake the door but it doesn't budge. Not getting out that easy...");
 		}
 	}
 

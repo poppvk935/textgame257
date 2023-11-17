@@ -12,19 +12,36 @@ import java.io.ObjectOutputStream;
 
 public class Game {
 	private static Room currentRoom;
+	//array list of Items that the player has picked up and can use
 	public static ArrayList<Item> inventory = new ArrayList<Item>();
+	//HashMap containing roomID and descriptions 
 	public static HashMap<String, String> roomDesc = new HashMap<String, String>(); 
 						//<RoomID, Description>
+	//HashSet containing conditions the player can get from the world
+	public static HashSet<String> flags = new HashSet<String>();
 	public static Scanner scan = new Scanner(System.in);
 	
+	/**
+	 * returns current room
+	 * static method
+	 * @return
+	 */
 	public static Room getCurrentRoom() {
 		return currentRoom;
 	}
 	
+	/**
+	 * allows for the manual change of room
+	 * @param r
+	 */
 	public static void setCurrentRoom(Room r) {
 		currentRoom = r;
 	}
 	
+	/**
+	 * saves game at current point
+	 * saves currentRoom, inventory, and World.rooms to a save file
+	 */
 	public static void saveGame() {
 		File saveFile = new File("save");
 		try {
@@ -42,7 +59,10 @@ public class Game {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Loads last save file
+	 * static method
+	 */
 	public static void loadGame() {
 		try {
 		ObjectInputStream stream = new ObjectInputStream(new FileInputStream(new File("save")));
@@ -60,6 +80,14 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * Populates a map based on the given file
+	 * breaks map items as 
+	 * keys - item directly after '#'
+	 * values - anything between key and next '#'
+	 * static method
+	 * @param fileName
+	 */
 	public static void populateMap(String fileName)  {
 		try {
 			Scanner scan = new Scanner(new File(fileName));
@@ -83,7 +111,12 @@ public class Game {
 			System.out.println("File "+fileName+" not found.");
 		}
 	}
-	
+	/**
+	 * moves player between rooms
+	 * checks that there is a room in the input direction
+	 * checks if the room is locked 
+	 * @param direction
+	 */
 	public static void move(char direction) { //make methods for often used commands
 		Room nextRoom = currentRoom.getExit(direction);
 		if(nextRoom != null) {
@@ -98,43 +131,71 @@ public class Game {
 			System.out.println("You can't go that way.");
 		}
 	}
-	
+	/**
+	 * gets item from inventory list 
+	 * static method
+	 * @param name
+	 * @return
+	 */
 	public static Item getItem(String name) {
 		for(Item i : inventory)
 			if(i.getName().equals(name))
 				return i;
 		return null;
 	}
-	
+	/**
+	 * adds item to inventory
+	 * static method
+	 * @param name
+	 */
 	public static void addItem(Item name) {
 		inventory.add(name);
+	}
+	
+	public static void removeItem(String name) {
+		inventory.remove(getItem(name));
+	}
+	
+	public static String getCondition(String cond) {
+		for(String s : flags)
+			if(s.equals(cond))
+				return s;
+		return null;
+	}
+	
+	public static void addCondition(String cond) {
+		flags.add(cond);
+	}
+	
+	public static void removeCondition(String cond) {
+		flags.remove(getCondition(cond));
 	}
 	
 	public static void print(String message) {
 		System.out.println(message+"\n");
 	}
 	
+/***********************************************************/	
 	public static void main(String[] args) {
-	
-	//TODO Auto-generated method stub
-
 		String playercommand = "a";
 		Item i;
 		NPC n;
 		Game.populateMap("Room Descriptions");
-		currentRoom = World.buildWorld(); //call a static method by [Class].[Method()] instead of [Object].[Method()]
+		currentRoom = World.buildWorld(); 
+		Game.print("You wake up on the cold jagged rock floor of a dungeon cell. With no idea how you got here or why and a terrible feeling in your gut, your only understanding is to escape.");
 		System.out.println(currentRoom);
-	//	do { do loop doesn't need to have the original variable defined before
-			// and runs at least once
 		
-
-		
-		
+		/***
+		 * Reads input playercommand 
+		 * uses a switch statement to determine
+		 * what player will do next
+		 */
 		while(!playercommand.equals("x")) {
 			System.out.print("What do you want to do?");
 			playercommand = scan.nextLine();
 			String[] a = playercommand.split(" ");
 			playercommand = a[0];
+			flags.add("first");
 			
 			switch (playercommand) {
 			case "e" :
@@ -146,7 +207,7 @@ public class Game {
 				move(playercommand.charAt(0));
 				break; 
 				
-				
+				//Inventory
 			case "i" :
 				if(inventory.isEmpty()) {
 				System.out.println("You are holding nothing!");
@@ -157,12 +218,12 @@ public class Game {
 				}
 				break;
 				
-				
+				//Exit game
 			case "x" :
 				System.out.println("Okay. Bye!");
 				break;
 				
-				
+				//Take item
 			case "take":
 				String it = a[1];
 				if(currentRoom.hasItem(it)) {
@@ -173,7 +234,7 @@ public class Game {
 				}
 				break; 
 				
-				
+				//Get item or NPC description
 			case "look":
 				if((currentRoom.hasItem(a[1]) )) {
 					i = currentRoom.getItem(a[1]);
@@ -190,7 +251,7 @@ public class Game {
 				
 				break;
 				
-				
+				//Use item in inventory
 			case "use":
 					i = getItem(a[1]);
 					if(i == null)
@@ -200,15 +261,18 @@ public class Game {
 				
 				break;
 				
+			//Have dialog with NPC	
 			case "talk":
 				NPC npc = currentRoom.getNPC(a[1]);
 				npc.talk();
 				break;
 				
+				//save game
 			case "save":
 				saveGame();
 				break;
 				
+				//load game
 			case "load":
 				loadGame();
 				break;
