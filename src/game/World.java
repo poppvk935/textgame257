@@ -2,14 +2,17 @@ package game;
 import items.*;
 import npcs.*;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class World {
 	public static HashMap<String, Room> rooms = new HashMap<String, Room>();
+	public static HashSet<Door> doors = new HashSet<Door>();
 	public static Room buildWorld() {
 		//Q1
 		Room startCell = new Room("startCell"); //1
 		Room hall1 = new Room("hall1"); //2
 		Room stairWell = new Room("stairwell"); //3
+		Room tempExit = new Room("tempExit");
 		
 		Room openCor = new Room("openCor"); //12
 		Room muckyBath = new Room("muckyBath"); //13
@@ -27,7 +30,7 @@ public class World {
 		Room stairB = new Room("stairB"); //9
 		
 		Room hall5 = new Room("hall5"); //10
-		Room cell3 = new Room("Cell3"); //11
+		Room cell3 = new Room("cell3"); //11
 		
 		//Q4 pending
 
@@ -38,9 +41,7 @@ public class World {
 		Chain chain = new Chain();
 		startCell.addItem(chain);
 		chain.setDesc("Rusty chain hanging from the ceiling. Looks like it opens a trapdoor. An escape?");
-		Key key = new Key();
-		startCell.addItem(key);
-		key.setDesc("It is a frail old key. Annoyingly rusty.");
+
 
 		
 		
@@ -57,6 +58,7 @@ public class World {
 		wand.setDesc("An interestingly uniform stick.");
 		Door exitDoor = new Door();
 		stairWell.addItem(exitDoor);
+		doors.add(exitDoor)
 		exitDoor.setDesc("The large door stands ");
 		
 		//openCor has two exits
@@ -84,6 +86,7 @@ public class World {
 		lockedRoom.isLocked();
 		ExitKey exitKey = new ExitKey();
 		lockedRoom.addItem(exitKey);
+		exitKey.setDesc("The heavy key seems to hold an air of importance. Maybe this can get you out of here?");
 		
 		
 		
@@ -130,12 +133,15 @@ public class World {
 		door.setDesc("Looks shakeable.");
 		door.setHeavy(true);
 		hall5.setLocked(true);
+		doors.add(door);
 		
 		//cell3 has one exit
 		cell3.addExit(hall5, 's');
-	/*	Key key = new Key();
+		cell3.setLocked(true);
+		Key key = new Key();
 		key.setDesc("It is a frail old key. Annoyingly rusty.");
-		*/
+		cell3.addItem(key);
+
 		
 		return startCell;
 	}

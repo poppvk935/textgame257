@@ -1,8 +1,7 @@
 package items;
-import java.io.Serializable;
 
 import game.*;
-public class Torch extends Item implements Serializable{
+public class Torch extends Item{
 	private boolean lit;
 	public Torch() {
 		super("torch");

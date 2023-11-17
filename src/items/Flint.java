@@ -2,13 +2,17 @@ package items;
 import game.*;
 public class Flint extends Item {
 	public Flint() {
-		super("Flint");
+		super("flint");
 	}
 	
 	public void use() {
-		if(game.Game.inventory.contains("torch")) {
-		//	Torch t = game.Game.getItem("torch");
-			
+		if(Game.hasItem("torch")) {
+			Torch t = (Torch) game.Game.getItem("torch");
+			t.setLit(true);
+			Game.print("You use the firestarter to light the torch.");
+			World.rooms.get("hall5").setLocked(false);
+			World.rooms.get("hall5").setRoomID("hall5_B");
+			setUsed(true);
 		}
 }
 }

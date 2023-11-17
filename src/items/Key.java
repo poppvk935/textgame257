@@ -3,12 +3,12 @@ import game.*;
 
 public class Key extends Item {
 	public Key() {
-		super("Key");
+		super("key");
 	}
 	
 	@Override //tells java to check the override
 	public void use() {
-			if(Game.getCurrentRoom().getName().equals("hall")) {
+			if(Game.getCurrentRoom().getName().equals("lockedRoom")|| Game.getCurrentRoom().getName().equals("openCor")) {
 				if(isUsed())
 					System.out.println("This room is already open.");
 				else {

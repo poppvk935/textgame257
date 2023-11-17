@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import items.*;
 
 
 public class Game {
@@ -111,6 +112,11 @@ public class Game {
 			System.out.println("File "+fileName+" not found.");
 		}
 	}
+	
+	public static void endGame() {
+		System.exit(0);
+	}
+	
 	/**
 	 * moves player between rooms
 	 * checks that there is a room in the input direction
@@ -150,6 +156,10 @@ public class Game {
 	 */
 	public static void addItem(Item name) {
 		inventory.add(name);
+	}
+	
+	public static boolean hasItem(String name) {
+		return getItem(name) != null;
 	}
 	
 	public static void removeItem(String name) {
@@ -259,6 +269,10 @@ public class Game {
 					else
 						i.use();
 				
+				break;
+				
+			case "push":
+					Door d = World.doors.
 				break;
 				
 			//Have dialog with NPC	
