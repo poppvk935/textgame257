@@ -43,6 +43,7 @@ public class World {
 		chain.setDesc("Rusty chain hanging from the ceiling. Looks like it opens a trapdoor. An escape?");
 
 
+
 		
 		
 		//hall1 has four exits
@@ -132,6 +133,7 @@ public class World {
 		Door door = new Door();
 		door.setDesc("Looks shakeable.");
 		door.setHeavy(true);
+		hall5.addItem(door);
 		hall5.setLocked(true);
 		doors.add(door);
 		

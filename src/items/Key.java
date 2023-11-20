@@ -3,7 +3,7 @@ import game.*;
 
 public class Key extends Item {
 	public Key() {
-		super("key");
+		super("frail key");
 	}
 	
 	@Override //tells java to check the override

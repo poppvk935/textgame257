@@ -131,10 +131,10 @@ public class Game {
 				Game.print("You can't go that way...yet.");
 			} else {
 				currentRoom = currentRoom.getExit(direction);
-				System.out.println(currentRoom);
+				Game.print(currentRoom+"");
 			}
 		} else {
-			System.out.println("You can't go that way.");
+			Game.print("You can't go that way.");
 		}
 	}
 	/**
@@ -181,6 +181,18 @@ public class Game {
 		flags.remove(getCondition(cond));
 	}
 	
+	public static String inSpl(String[] s) {
+		String non = s[0];
+		String out = s[1];
+		if(s.length > 2) {
+			for(int i=2;i<s.length;i++) {
+					out= out + " " + s[i];
+			}
+		}
+		
+		return out;
+	}
+	
 	public static void print(String message) {
 		System.out.println(message+"\n");
 	}
@@ -201,7 +213,7 @@ public class Game {
 		 * what player will do next
 		 */
 		while(!playercommand.equals("x")) {
-			System.out.print("What do you want to do?");
+			Game.print("What do you want to do?");
 			playercommand = scan.nextLine();
 			String[] a = playercommand.split(" ");
 			playercommand = a[0];
@@ -220,11 +232,12 @@ public class Game {
 				//Inventory
 			case "i" :
 				if(inventory.isEmpty()) {
-				System.out.println("You are holding nothing!");
+				Game.print("You are holding nothing!");
 				} else {
 					for (Item it : inventory) {
 						System.out.println(it);
 					}
+					System.out.print("\n");
 				}
 				break;
 				
@@ -235,7 +248,7 @@ public class Game {
 				
 				//Take item
 			case "take":
-				String it = a[1];
+				String it = inSpl(a);
 				if(currentRoom.hasItem(it)) {
 					Item item = currentRoom.getItem(it);
 					item.take();
@@ -246,15 +259,15 @@ public class Game {
 				
 				//Get item or NPC description
 			case "look":
-				if((currentRoom.hasItem(a[1]) )) {
-					i = currentRoom.getItem(a[1]);
+				if((currentRoom.hasItem(inSpl(a)) )) {
+					i = currentRoom.getItem(inSpl(a));
 					i.look();
-				} else if(currentRoom.hasNPC(a[1])) {
-					n = currentRoom.getNPC(a[1]);
+				} else if(currentRoom.hasNPC(inSpl(a))) {
+					n = currentRoom.getNPC(inSpl(a));
 					n.look();
 				}
 				for(int z=0;z<inventory.size();z++) {
-					if(inventory.get(z).getName().equals(a[1])) {
+					if(inventory.get(z).getName().equals(inSpl(a))) {
 						inventory.get(z).look();
 					}
 				}
@@ -263,12 +276,12 @@ public class Game {
 				
 				//Use item in inventory
 			case "use":
-					i = getItem(a[1]);
+					i = getItem(inSpl(a));
 					if(i == null) {
 						//System.out.println("You don't have the " + a[1]);
-						i = currentRoom.getItem(a[1]);
+						i = currentRoom.getItem(inSpl(a));
 						if(i == null) {
-							print("There is no " + a[1]);
+							print("There is no " + inSpl(a));
 						} else {
 							i.use();
 						}
@@ -283,7 +296,7 @@ public class Game {
 				
 			//Have dialog with NPC	
 			case "talk":
-				NPC npc = currentRoom.getNPC(a[1]);
+				NPC npc = currentRoom.getNPC(inSpl(a));
 				npc.talk();
 				break;
 				
@@ -298,7 +311,7 @@ public class Game {
 				break;
 				
 			default:
-				System.out.println("Invalid Command, reenter.");
+				Game.print("Invalid Command, reenter.");
 			}
 				
 		} scan.close();

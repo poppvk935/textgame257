@@ -24,7 +24,7 @@ lockedRoom
 The small hallway is abruptly ended by a locked stone door. Can't get by without a key.
 #
 lockedRoom_B
-b
+You are in a dimly lit room. Bookshelves line the walls. There is a desk against the wall that holds an old key. 
 #
 doorHall
 You are in the hallway with the ajar door
@@ -56,4 +56,7 @@ The horseshoe shaped hallway feels much more cold than the rest of the dungeon. 
 #
 cell3
 You can look in the small hole for a window and see something on the floor 
+#
+cell3_B
+This cell seems weirdly colder than the others. You kind of want to leave. There is a frail key on the floor next to what you hope isn't a skeletal hand. 
 #

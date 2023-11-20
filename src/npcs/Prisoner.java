@@ -16,6 +16,7 @@ public class Prisoner extends NPC	{
 			};
 			getResponse(options);
 			increaseTalk(1);
+			//player talks to them
 		} else if(getTalk() == 2) {
 			say("What are you just staring at me for?!");
 			String[] options = {
@@ -24,6 +25,15 @@ public class Prisoner extends NPC	{
 			};
 			getResponse(options);
 			increaseTalk(1);
+			//player brushes them off
+		} else if(getTalk() == 3) {
+			say("I knew you would come around. You have to get me out of here! They keep all they keys in the guard room on the second floor.");
+			String[] options = {
+					"Second floor? There's a second floor to this maze?", 
+					"How am I supposed to get up there? The way is blocked with rusty old stuff!"
+			};
+			getResponse(options);
+			increaseTalk(-1);
 		}
 	}
 	
@@ -36,6 +46,7 @@ public class Prisoner extends NPC	{
 			case 2:
 				say("Hey! I know you can hear me!");
 				Game.print("They throw a rock at you. It hits you in the arm.");
+				increaseTalk(1);
 				break;
 			default:
 				Game.print("You say nothing.");
@@ -46,8 +57,11 @@ public class Prisoner extends NPC	{
 			case 1:
 			say("Yes, of course there's a second floor. Haven't you seen all the staircases?!");
 			increaseTalk(1);
+			break;
 			case 2:
 				say("Oh? Really?");
+				increaseTalk(1);
+				break;
 			}
 		}
 	}

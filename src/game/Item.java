@@ -10,8 +10,8 @@ public class Item implements Serializable{
 	private boolean used;	//better for multi purpose 
 	
 	public Item(String n) {
-		if(n.contains(" "))
-			throw new IllegalArgumentException("Name must be one word : " +n);
+	/*	if(n.contains(" "))
+			throw new IllegalArgumentException("Name must be one word : " +n);*/
 		name = n;
 		heavy = false;
 		used = false;

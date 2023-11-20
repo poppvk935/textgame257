@@ -13,6 +13,8 @@ public class Flint extends Item {
 			World.rooms.get("hall5").setLocked(false);
 			World.rooms.get("hall5").setRoomID("hall5_B");
 			setUsed(true);
+		} else {
+			Game.print("What are you going to use it on? The air?");
 		}
 }
 	public void take() {
