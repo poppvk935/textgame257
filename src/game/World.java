@@ -58,7 +58,7 @@ public class World {
 		wand.setDesc("An interestingly uniform stick.");
 		Door exitDoor = new Door();
 		stairWell.addItem(exitDoor);
-		doors.add(exitDoor)
+		doors.add(exitDoor);
 		exitDoor.setDesc("The large door stands ");
 		
 		//openCor has two exits

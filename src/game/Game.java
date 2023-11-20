@@ -264,15 +264,21 @@ public class Game {
 				//Use item in inventory
 			case "use":
 					i = getItem(a[1]);
-					if(i == null)
-						System.out.println("You don't have the " + a[1]);
-					else
+					if(i == null) {
+						//System.out.println("You don't have the " + a[1]);
+						i = currentRoom.getItem(a[1]);
+						if(i == null) {
+							print("There is no " + a[1]);
+						} else {
+							i.use();
+						}
+					}else
 						i.use();
 				
 				break;
 				
 			case "push":
-					Door d = World.doors.
+					//Door d = World.doors.
 				break;
 				
 			//Have dialog with NPC	

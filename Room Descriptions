@@ -1,5 +1,8 @@
 startCell
-The room where you woke up. To your east, the cell door. The door's lock appears to have been broken, allowing you easy access to and from. 
+The room where you woke up. To your east, the cell door. The door's lock appears to have been broken, allowing you easy access to and from. A rusty chain hangs from the ceiling. 
+#
+startCell_B
+The room where you woke up. To your east, the cell door. The door's lock appears to have been broken, allowing you easy access to and from. The trapdoor you pulled earlier still hangs open, remnants of purple goo still covering it. 
 #
 hall1
 You are in a dimly lit hallway. Its low ceilings and narrow walls make you claustrophobic. To the west is the cell you woke up in. To the east, another, equally narrow hallway extends into darkness. To the south, a large open corridor. Next to your cell, a stairway leads upstairs. 
@@ -12,7 +15,10 @@ You are in a large open corridor. In comparison to the halls around it, this roo
 To the west leads to the bathroom. The north leads into a narrow corridor. You can kind of see where you started from it. Up a few stairs you can see a door. 
 #
 muckyBath
-You are in a mucky old bathroom, overtaken by mold. Your head spins at the muggy moldy scent that permeates the room. The small room contains 
+You are in a mucky old bathroom, overtaken by mold. Your head spins at the muggy moldy scent that permeates the room. The small room contains an equally small shower, if one could call it that. It's much more like a faucet on the ceiling. Underneath it, though, on the floor, sits a flint.
+#
+muckyBath_B
+You are in a mucky old bathroom, overtaken by mold. Your head spins at the muggy moldy scent that permeates the room. The small room contains an equally small shower, if one could call it that. It's much more like a faucet on the ceiling.
 #
 lockedRoom
 The small hallway is abruptly ended by a locked stone door. Can't get by without a key.
@@ -24,7 +30,11 @@ doorHall
 You are in the hallway with the ajar door
 #
 ajarCell
-You are in the unlocked cell
+You are in the unlocked cell...
+There is a torch on the floor
+#
+ajarCell_B
+You are in the unlocked cell...
 #
 hall3
 Down the long hallway, better lit than anything else you've seen around here, you can see a staircase. Unfortunately, unless you want tetanus, braving the southward walk of old rusty weapons and broken weapons stands doesn't sound like a good idea. 

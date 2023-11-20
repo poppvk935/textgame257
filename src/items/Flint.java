@@ -15,4 +15,8 @@ public class Flint extends Item {
 			setUsed(true);
 		}
 }
+	public void take() {
+		super.take();
+		World.rooms.get("muckyBath").setRoomID("muckyBath_B");
+	}
 }

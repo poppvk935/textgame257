@@ -20,8 +20,16 @@ public class Torch extends Item{
 	
 	public void look() {
 		if(lit == true) {
-			
+			Game.print("The lit torch burns bright, allowing you to see far ahead. Wouldn't hold it too close to your head though.");
+		}else {
+			Game.print(getDesc());
 		}
+	}
+	
+	public void take() {
+		super.take();
+		World.rooms.get("ajarCell").setRoomID("ajarCell_B");
+		
 	}
 
 }

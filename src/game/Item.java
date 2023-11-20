@@ -24,6 +24,9 @@ public class Item implements Serializable{
 	public void setDesc(String desc) {
 		description = desc;
 	}
+	public String getDesc() {
+		return description;
+	}
 	
 	public boolean isUsed()  {
 		return used;
