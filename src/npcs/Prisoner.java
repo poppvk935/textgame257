@@ -1,10 +1,14 @@
 package npcs;
 import game.*;
+import items.*;
 public class Prisoner extends NPC	{
 	public Prisoner() {
 		super("prisoner", "A shadowy figure looks at you from the bars of the cell. You can barely make out any features.");	
 	}
 	
+	/*
+	 * Prisoner gives you shoes to go up staircase B
+	 */
 	@Override
 	public void talk() {
 		if(getTalk() == 1) {
@@ -60,6 +64,8 @@ public class Prisoner extends NPC	{
 			break;
 			case 2:
 				say("Oh? Really?");
+				Shoes shoes = new Shoes();
+				Game.addItem(shoes);
 				increaseTalk(1);
 				break;
 			}

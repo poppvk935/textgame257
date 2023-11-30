@@ -41,11 +41,7 @@ public class World {
 		Chain chain = new Chain();
 		startCell.addItem(chain);
 		chain.setDesc("Rusty chain hanging from the ceiling. Looks like it opens a trapdoor. An escape?");
-
-
-
-		
-		
+				
 		//hall1 has four exits
 		hall1.addExit(stairWell, 'u');
 		hall1.addExit(openCor, 's');
@@ -84,7 +80,7 @@ public class World {
 		
 		//lockedRoom has one exit
 		lockedRoom.addExit(openCor, 'd');
-		lockedRoom.isLocked();
+		lockedRoom.setLocked(true);
 		ExitKey exitKey = new ExitKey();
 		lockedRoom.addItem(exitKey);
 		exitKey.setDesc("The heavy key seems to hold an air of importance. Maybe this can get you out of here?");

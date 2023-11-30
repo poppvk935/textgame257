@@ -27,26 +27,26 @@ lockedRoom_B
 You are in a dimly lit room. Bookshelves line the walls. There is a desk against the wall that holds an old key. 
 #
 doorHall
-You are in the hallway with the ajar door
+You are in a hallway as claustrophobic as the rest. To the west, you can see the hallway that contains the cell you woke up in. To the south, a hallway brightly lit leads to a staircase. To the east, you see another hallway turning down south. To the north, you can see one of the many cells lining this hallway has been left ajar. 
 #
 ajarCell
-You are in the unlocked cell...
+You are in the unlocked cell. To the south is the entrance. 
 There is a torch on the floor
 #
 ajarCell_B
-You are in the unlocked cell...
+You are in the unlocked cell. To the southis the entrance. 
 #
 hall3
 Down the long hallway, better lit than anything else you've seen around here, you can see a staircase. Unfortunately, unless you want tetanus, braving the southward walk of old rusty weapons and broken weapons stands doesn't sound like a good idea. 
 #
 stairC
- The entrance to the stairway is blocked by weapons and rubble. You don't want to go over there. 
+The entrance to the stairway is blocked by weapons and rubble. You don't want to go over there. 
 #
 stairC_unlocked
 The stairway leads upstairs to a brightly lit room. Back downstairs is the hallway full of rusty metal.
 #
 hall4
-The hallway looks much like the others you've been in. This whole place looks concerningly easy to get lost in. To the north, the hallway with the weird rubble. To the west, a twisting, abnormally dark hallway. To the right, an ornate door closed off with heavy objects, as if to keep everything out no matter what. 
+The hallway looks much like the others you've been in. This whole place looks concerningly easy to get lost in. To the north, the hallway with the weird rubble. To the west, a twisting, abnormally dark hallway. To the right, an ornate door closed off with heavy objects, as if to keep everything out no matter what. Down in the hallway, you hear the distinct sounds of a person humming in one of the cells.
 #
 hall5
 Looking down the hallway, you can make out that it turns, but not much more than that. You get a weird feeling from this hallway. Probably shouldn't go down there. 
@@ -55,7 +55,7 @@ hall5_B
 The horseshoe shaped hallway feels much more cold than the rest of the dungeon. You have a sinking feeling you're being watched out of the small bar windows in the nearly pitch black cells behind you. At the dead end of the horseshoe, traveling north is a cell with a fragile door. 
 #
 cell3
-You can look in the small hole for a window and see something on the floor 
+You can look in the small hole for a window and see something on the floor.
 #
 cell3_B
 This cell seems weirdly colder than the others. You kind of want to leave. There is a frail key on the floor next to what you hope isn't a skeletal hand. 

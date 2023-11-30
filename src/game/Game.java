@@ -124,9 +124,11 @@ public class Game {
 	 * @param direction
 	 */
 	public static void move(char direction) { //make methods for often used commands
+		Room lastRoom = currentRoom;
 		Room nextRoom = currentRoom.getExit(direction);
 		if(nextRoom != null) {
 			if(nextRoom.isLocked()) {
+				currentRoom = lastRoom;
 				Game.print(nextRoom.getDesc());
 				Game.print("You can't go that way...yet.");
 			} else {
