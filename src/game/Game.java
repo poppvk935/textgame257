@@ -21,7 +21,7 @@ public class Game {
 	//HashSet containing conditions the player can get from the world
 	public static HashSet<String> flags = new HashSet<String>();
 	public static Scanner scan = new Scanner(System.in);
-	
+	public static GUI gui;
 	/**
 	 * returns current room
 	 * static method
@@ -195,19 +195,22 @@ public class Game {
 		return out;
 	}
 	
-	public static void print(String message) {
-		System.out.println(message+"\n");
+	public static void print(Object message) {
+		gui.print(message.toString());
+		
 	}
 	
 /***********************************************************/	
 	public static void main(String[] args) {
+
 		String playercommand = "a";
 		Item i;
 		NPC n;
 		Game.populateMap("Room Descriptions");
 		currentRoom = World.buildWorld(); 
+		gui = new GUI();
 		Game.print("You wake up on the cold jagged rock floor of a dungeon cell. With no idea how you got here or why and a terrible feeling in your gut, your only understanding is to escape.");
-		System.out.println(currentRoom);
+		Game.print(currentRoom);
 		
 		/***
 		 * Reads input playercommand 
@@ -215,7 +218,7 @@ public class Game {
 		 * what player will do next
 		 */
 		while(!playercommand.equals("x")) {
-			Game.print("What do you want to do?");
+			System.out.println("What do you want to do?");
 			playercommand = scan.nextLine();
 			String[] a = playercommand.split(" ");
 			playercommand = a[0];
@@ -237,15 +240,15 @@ public class Game {
 				Game.print("You are holding nothing!");
 				} else {
 					for (Item it : inventory) {
-						System.out.println(it);
+						Game.print(it);
 					}
-					System.out.print("\n");
+					Game.print("\n");
 				}
 				break;
 				
 				//Exit game
 			case "x" :
-				System.out.println("Okay. Bye!");
+				Game.print("Okay. Bye!");
 				break;
 				
 				//Take item
@@ -255,7 +258,7 @@ public class Game {
 					Item item = currentRoom.getItem(it);
 					item.take();
 				} else {
-					System.out.println("There is no "+it+"!");
+					Game.print("There is no "+it+"!");
 				}
 				break; 
 				

@@ -12,7 +12,11 @@ You are in the old stairwell. The small stairs and narrow hallway of this spiral
 #
 openCor
 You are in a large open corridor. In comparison to the halls around it, this room is a breath of fresh air. It is well lit. 
-To the west leads to the bathroom. The north leads into a narrow corridor. You can kind of see where you started from it. Up a few stairs you can see a door. 
+To the west leads to the bathroom. The north leads into a narrow corridor. You can kind of see where you started from it. Up a few stairs you can see a door. In the middle of the corridor, near a pillar, you see a really ugly puppy inexplicably digging something.
+#
+openCor_B
+You are in a large open corridor. In comparison to the halls around it, this room is a breath of fresh air. It is well lit. 
+To the west leads to the bathroom. The north leads into a narrow corridor. You can kind of see where you started from it. Up a few stairs you can see a door.
 #
 muckyBath
 You are in a mucky old bathroom, overtaken by mold. Your head spins at the muggy moldy scent that permeates the room. The small room contains an equally small shower, if one could call it that. It's much more like a faucet on the ceiling. Underneath it, though, on the floor, sits a flint.

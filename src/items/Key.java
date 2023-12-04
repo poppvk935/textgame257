@@ -10,15 +10,15 @@ public class Key extends Item {
 	public void use() {
 			if(Game.getCurrentRoom().getName().equals("lockedRoom")|| Game.getCurrentRoom().getName().equals("openCor")) {
 				if(isUsed())
-					System.out.println("This room is already open.");
+					Game.print("This room is already open.");
 				else {
-					System.out.println("The key fits in the the lock.");
+					Game.print("The key fits in the the lock.");
 					World.rooms.get("lockedRoom").setLocked(false);
 					World.rooms.get("lockedRoom").setRoomID("lockedRoom_B");
 					setUsed(true);
 				}
 			} else 
-				System.out.println("They key doesn't fit any lock in this room.");
+				Game.print("They key doesn't fit any lock in this room.");
 		}
 /*	@Override 
 	public void take() {

@@ -63,6 +63,7 @@ public class Puppy extends NPC{
 			say("You're a bad person! I don't like you!");
 			Game.print("The puppy runs away");
 			setLeft(true);
+			World.rooms.get("openCor").setRoomID("openCor_B");
 			break;
 		default:
 			Game.print("You say nothing.");

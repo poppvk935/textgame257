@@ -6,7 +6,9 @@ public class Shoes extends Item{
 	}
 	@Override 
 	public void use() {
-		if(Game.getCurrentRoom())
+		if(Game.getCurrentRoom().getName().equals("stairC")) {
+			
+		}
 	}
 	
 	
