@@ -11,9 +11,10 @@ public class Prisoner extends NPC	{
 	 */
 	@Override
 	public void talk() {
+		setTalking(true);
 		if(getTalk() == 1) {
 			say("Hey, you! Come here.");
-			Game.print("The shadowy figure sticks their hands out the bars, motioning for you to come closer.");
+			Game.print2("The shadowy figure sticks their hands out the bars, motioning for you to come closer.");
 			String[] options = {
 					"'Uh... Hello?' You move closer to the cell.", 
 					"You pretend you didn't hear anything and move on."
@@ -49,11 +50,11 @@ public class Prisoner extends NPC	{
 				break;
 			case 2:
 				say("Hey! I know you can hear me!");
-				Game.print("They throw a rock at you. It hits you in the arm.");
+				Game.print2("They throw a rock at you. It hits you in the arm.");
 				increaseTalk(1);
 				break;
 			default:
-				Game.print("You say nothing.");
+				Game.print2("You say nothing.");
 				increaseTalk(-1);
 			}
 		} else if(getTalk() == 2) {
@@ -70,5 +71,6 @@ public class Prisoner extends NPC	{
 				break;
 			}
 		}
+		setTalking(false);
 	}
 }

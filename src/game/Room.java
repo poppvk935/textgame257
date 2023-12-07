@@ -86,6 +86,15 @@ public class Room implements Serializable{
 		return roomNPCs.get(name);
 	}
 	
+	public String getNPCName(String n) {
+		NPC p = getNPC(n);
+		if(p == null) {
+			return "There is no npc";
+		}
+		return p.getName();
+	}
+	
+	
 	public int getEntry() {
 		return entry;
 	}
@@ -93,6 +102,7 @@ public class Room implements Serializable{
 	public void setEntry(int i) {
 		entry += i;
 	}
+	
 	
 	//returns room variable based on move input
 	//returns null if invalid variable

@@ -9,12 +9,12 @@ public class ExitKey extends Item {
 	
 	public void use() {
 		if(Game.getCurrentRoom().getName().equals("stairwell")) {
-			Game.print("You use the key on the door. It unlocks with a click and pushing the door open, you take in your sweet escape.");
+			Game.print2("You use the key on the door. It unlocks with a click and pushing the door open, you take in your sweet escape.");
 			setUsed(true);
 			Game.endGame();
 			
 		} else {
-			Game.print("There is nowhere here to use this.");
+			Game.print2("There is nowhere here to use this.");
 		}
 	}
 

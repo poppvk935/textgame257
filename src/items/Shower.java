@@ -10,10 +10,10 @@ public class Shower extends Item {
 	public void use() {
 		if(Game.getCurrentRoom().getName().equals("muckyBath")) {
 			if(Game.hasItem("goo")) {
-				Game.print("You turn on the shower and wash away the goo.");
+				Game.print2("You turn on the shower and wash away the goo.");
 				Game.removeItem("goo");
 			} else {
-			System.out.println("Why would you shower right now? You'll get nothing out of walking around all wet.");
+			Game.print2("Why would you shower right now? You'll get nothing out of walking around all wet.");
 				
 			}
 		}
@@ -21,10 +21,10 @@ public class Shower extends Item {
 	
 	public void look() {
 		if(Game.inventory.contains("flint")) {
-			Game.print("You already have the flint...");
+			Game.print2("You already have the flint...");
 			
 		} else {
-			System.out.println("The rusty old shower something...");
+			Game.print2("The rusty old shower has a flint sitting on the floor. Someone seemed to have tried to light a fire in here. Too bad they didn't realize water puts it out.");
 		}
 			
 	}

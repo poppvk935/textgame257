@@ -11,9 +11,9 @@ public class Wand extends Item{
 		if(Game.getCurrentRoom().getName().equals("lobby")) {
 			Room bar = World.rooms.get("Bar");
 			Game.setCurrentRoom(bar);
-			Game.print(bar.getDesc());
+			Game.print2(bar.getDesc());
 			
 		}
-			System.out.println("You wave the wand around");
+			Game.print2("You wave the wand around");
 	}
 }

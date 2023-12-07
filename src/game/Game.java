@@ -22,6 +22,8 @@ public class Game {
 	public static HashSet<String> flags = new HashSet<String>();
 	public static Scanner scan = new Scanner(System.in);
 	public static GUI gui;
+	public static String p;
+	public static String[] a;
 	/**
 	 * returns current room
 	 * static method
@@ -141,7 +143,7 @@ public class Game {
 	}
 	/**
 	 * gets item from inventory list 
-	 * static method
+	 * static method		return 
 	 * @param name
 	 * @return
 	 */
@@ -195,33 +197,54 @@ public class Game {
 		return out;
 	}
 	
+	public static String getCommand() {
+		if(a != null && a.length > 1)
+			return a[1];
+		else
+			return null;
+	}
+	
+	public static String getPlayerCommand() {
+		return p;
+	}
+	
+	public static void setPlayerCommand(String s) {
+		p = s;
+	}
+
 	public static void print(Object message) {
 		gui.print(message.toString());
 		
 	}
+	public static void print2(Object message) {
+		gui.print2(message.toString());
+	}
 	
 /***********************************************************/	
 	public static void main(String[] args) {
+	//	String playercommand = gui.getPlayerCommand();
+		//String playercommand = "a";
 
-		String playercommand = "a";
-		Item i;
-		NPC n;
 		Game.populateMap("Room Descriptions");
 		currentRoom = World.buildWorld(); 
 		gui = new GUI();
 		Game.print("You wake up on the cold jagged rock floor of a dungeon cell. With no idea how you got here or why and a terrible feeling in your gut, your only understanding is to escape.");
 		Game.print(currentRoom);
-		
+	}
+	public static void processCommand(String playercommand) {
+		Item i;
+		NPC n;
 		/***
 		 * Reads input playercommand 
 		 * uses a switch statement to determine
 		 * what player will do next
 		 */
-		while(!playercommand.equals("x")) {
-			System.out.println("What do you want to do?");
-			playercommand = scan.nextLine();
-			String[] a = playercommand.split(" ");
+
+			//playercommand = scan.nextLine();
+			//playercommand = gui.getPlayerCommand();
+			a = playercommand.split(" ");
 			playercommand = a[0];
+			setPlayerCommand(playercommand);
 			flags.add("first");
 			
 			switch (playercommand) {
@@ -237,18 +260,18 @@ public class Game {
 				//Inventory
 			case "i" :
 				if(inventory.isEmpty()) {
-				Game.print("You are holding nothing!");
+				Game.print2("You are holding nothing!");
 				} else {
 					for (Item it : inventory) {
-						Game.print(it);
+						Game.print2(it);
 					}
-					Game.print("\n");
+					Game.print2("\n");
 				}
 				break;
 				
 				//Exit game
 			case "x" :
-				Game.print("Okay. Bye!");
+				Game.print2("Okay. Bye!");
 				break;
 				
 				//Take item
@@ -258,7 +281,7 @@ public class Game {
 					Item item = currentRoom.getItem(it);
 					item.take();
 				} else {
-					Game.print("There is no "+it+"!");
+					Game.print2("There is no "+it+"!");
 				}
 				break; 
 				
@@ -286,7 +309,7 @@ public class Game {
 						//System.out.println("You don't have the " + a[1]);
 						i = currentRoom.getItem(inSpl(a));
 						if(i == null) {
-							print("There is no " + inSpl(a));
+							print2("There is no " + inSpl(a));
 						} else {
 							i.use();
 						}
@@ -319,7 +342,7 @@ public class Game {
 				Game.print("Invalid Command, reenter.");
 			}
 				
-		} scan.close();
+		} 
 	} 
-}
+
 

@@ -9,12 +9,12 @@ public class Flint extends Item {
 		if(Game.hasItem("torch")) {
 			Torch t = (Torch) game.Game.getItem("torch");
 			t.setLit(true);
-			Game.print("You use the firestarter to light the torch.");
+			Game.print2("You use the firestarter to light the torch.");
 			World.rooms.get("hall5").setLocked(false);
 			World.rooms.get("hall5").setRoomID("hall5_B");
 			setUsed(true);
 		} else {
-			Game.print("What are you going to use it on? The air?");
+			Game.print2("What are you going to use it on? The air?");
 		}
 }
 	public void take() {

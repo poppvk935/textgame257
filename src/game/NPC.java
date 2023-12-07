@@ -7,12 +7,13 @@ public class NPC implements Serializable{
 	private String desc;
 	private boolean left;
 	private int talk;
+	private static boolean isTalking;
 	
 	public NPC(String n, String d) {
 		name = n;
 		desc = d;
 		talk = 1;
-		
+		isTalking = false;
 	}
 	
 	public String getName() {
@@ -36,15 +37,24 @@ public class NPC implements Serializable{
 	}
 	
 	public void look() {
-		Game.print(desc);
+		Game.print2(desc);
 	}
 
 	public void say(String dialog) {
-		Game.print(name+": " + dialog);
+		Game.print2(name+": " + dialog);
 	}
 	
 	public void talk() { //npc talking to player
-		Game.print("You can't talk to "+name);
+		Game.print2("You can't talk to "+name);
+		setTalking(true);
+	}
+	
+	public static boolean isTalking() {
+			return isTalking;
+	}
+	
+	public void setTalking(boolean b) {
+		isTalking = b;
 	}
 	
 	public void response(int option) {
@@ -73,12 +83,12 @@ public class NPC implements Serializable{
 	 */
 	public void getResponse(String[] options) {
 		for (int i =0; i<options.length; i++) {
-			Game.print("Option "+(i+1)+ ": "+options[i]);
+			Game.print2("Option "+(i+1)+ ": "+options[i]);
 		}
-		Game.print("Enter an option (1-"+options.length+"): ");
-		int choice = Game.scan.nextInt();
-		Game.scan.nextLine(); //flush input buffer
-		response(choice);
-		
+		Game.print2("Enter an option (1-"+options.length+"): ");
+		setTalking(false);
+
+
 	}
+		
 }
