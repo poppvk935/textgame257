@@ -102,14 +102,12 @@ public String getPlayerCommand() {
 				text2.setText("");
 				String playercommand = uin.getText();
 
-				uin.setText("");
+				
 				
 				
 				String g = Game.getCommand();
 				if((Game.getCurrentRoom().getNPCName(Game.getCommand())).equals(g)) {
-				Game.print2("Player is talking");
 				NPC npc = Game.getCurrentRoom().getNPC(Game.getCommand());
-				Game.print2(npc);
 				try {
 				int option = Integer.parseInt(uin.getText());
 				npc.response(option);
@@ -120,6 +118,7 @@ public String getPlayerCommand() {
 				} else {
 					Game.processCommand(playercommand);
 				}
+				uin.setText("");
 			}
 	}
 
